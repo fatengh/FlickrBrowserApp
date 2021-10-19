@@ -88,8 +88,8 @@ class MainActivity : AppCompatActivity() {
                 val serverID = photos.getJSONObject(i).getString("server")
                 val id = photos.getJSONObject(i).getString("id")
                 val secret = photos.getJSONObject(i).getString("secret")
-                val photoLink = "https://farm$farmID.staticflickr.com/$serverID/${id}_$secret.jpg"
-                imgs.add(Image(title, photoLink))
+                val link = "https://farm$farmID.staticflickr.com/$serverID/${id}_$secret.jpg"
+                imgs.add(Image(title, link))
             }
             rvAdap.notifyDataSetChanged()
         }
@@ -101,8 +101,8 @@ class MainActivity : AppCompatActivity() {
         llBottom.isVisible = true
     }
 
-    fun openImg(link: String){
-        Glide.with(this).load(link).into(imBIG)
+    fun openImg(url: String){
+        Glide.with(this).load(url).into(imBIG)
         imBIG.isVisible = true
         rv.isVisible = false
         llBottom.isVisible = false
